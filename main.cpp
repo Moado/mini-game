@@ -1,7 +1,3 @@
-// O------------------------------------------------------------------------------O
-// | Example "Hello World" Program (main.cpp)                                     |
-// O------------------------------------------------------------------------------O
-
 #define OLC_PGE_APPLICATION
 #include "olcPixelGameEngine.h"
 
@@ -22,10 +18,17 @@ public:
 	{
 		// Name your application
 		sAppName = "Example";
-	        point p1 = { 24, 65 };
+
+		point p1 = { 24, 65 };
 		point p2 = { 125, 175 };
 		points.push_back(p1);
 		points.push_back(p2);
+		for (int i = 0; i < 20; i++)
+		{
+			point p = { rand() % 256, rand() % 256 };
+			points.push_back(p);
+		}
+
 	}
 
 public:
@@ -37,10 +40,15 @@ public:
 
 	bool OnUserUpdate(float fElapsedTime) override
 	{
-		// Called once per frame, draws random coloured pixels
-		for (auto p : points) {	
-			Draw(p.x, p.y, olc::Pixel(olc::RED));
+
+// Called once per frame, draws random coloured pixels		
+		for (auto p : points) {
+			for (int i = 0; i < 10; i++)
+				for (int j = 0; j < 10; j++)
+					Draw(p.x+i, p.y+j, olc::Pixel(olc::RED));
 		}
+
+
 		return true;
 	}
 };
