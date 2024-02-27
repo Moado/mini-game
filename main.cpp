@@ -9,6 +9,7 @@ struct point {
 // Override base class with your custom functionality
 class Example : public olc::PixelGameEngine
 {
+
 private:
 	std::vector<point> points;
 
@@ -27,6 +28,7 @@ public:
 			point p = { rand() % 256, rand() % 256 };
 			points.push_back(p);
 		}
+
 	}
 
 public:
@@ -38,12 +40,14 @@ public:
 
 	bool OnUserUpdate(float fElapsedTime) override
 	{
-		// Called once per frame, draws random coloured pixels		
+
+// Called once per frame, draws random coloured pixels		
 		for (auto p : points) {
 			for (int i = 0; i < 10; i++)
 				for (int j = 0; j < 10; j++)
 					Draw(p.x+i, p.y+j, olc::Pixel(olc::RED));
 		}
+
 
 		return true;
 	}
